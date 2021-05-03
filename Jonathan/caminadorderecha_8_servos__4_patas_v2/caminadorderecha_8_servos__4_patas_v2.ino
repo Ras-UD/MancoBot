@@ -21,17 +21,17 @@ int i=0;
 void setup() {
     Serial.begin(9600);
     
-    delaIzq.attach(1);
-    delaIzqCodo.attach(2);     //igual 1
+    delaIzq.attach(2);
+    delaIzqCodo.attach(3);     //igual 1
 
-    delaDer.attach(3);
-    delaDerCodo.attach(4);
+    delaDer.attach(4);
+    delaDerCodo.attach(5);
 
-    traDer.attach(5);
-    traDerCodo.attach(6);     //igual 1
+    traDer.attach(6);
+    traDerCodo.attach(7);     //igual 1
 
-    traIzq.attach(7);
-    traIzqCodo.attach(8);
+    traIzq.attach(8);
+    traIzqCodo.attach(9);
 
 //inicializacion              
     delaIzq.write(70);             // 0 delante
