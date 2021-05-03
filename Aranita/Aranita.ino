@@ -1,5 +1,5 @@
 #include<Servo.h>
-
+// prueba de git
 // Declaración de los servo motores
 Servo izq_pata1;
 Servo izq_hombro1;
