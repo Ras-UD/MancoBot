@@ -12,12 +12,15 @@ Servo r_d_t;
 Servo c_i_t;
 Servo r_i_t;
 
-int ang_c_d[] = {135,120,105, 90, 75, 60, 45, 60, 75, 90,105,120};
-int ang_r_d[] = {  0,  0,  0,  0,  0,  0, 90, 90, 90, 90, 90, 90};
-int ang_c_i[] = { 45, 60, 75, 90,105,120,135,120,105, 90, 75, 60};
-int ang_r_i[] = {180,180,180,180,180,180, 90, 90, 90, 90, 90, 90};
+int ang_c_d[] = {135, 120, 105, 90, 75, 60, 45, 60, 75, 90, 105, 120};
+int ang_r_d[] = {  0,  0,  0,  0,  0,  90, 90, 90, 90, 90, 90, 90};
+int ang_c_i[] = { 45, 60, 75, 90, 105, 120, 135, 120, 105, 90, 75, 60};
+int ang_r_i[] = {180, 180, 180, 180, 180, 90, 90, 90, 90, 90, 90, 90};
+int swich = 1 ;
 
 void setup() {
+  pinMode(10, INPUT);
+  
   Serial.begin(9600);
   c_d_f.attach(4);
   r_d_f.attach(5);
@@ -30,26 +33,29 @@ void setup() {
 }
 
 void loop() {
-  // primer movimiento diagonal
-  for (byte i = 0; i < 12; i = i + 1) {
-    c_d_f.write(ang_c_d[i]);  // enviar posición al servo de la cadera derecha
-    r_d_f.write(ang_r_d[i]);  // enviar posición al servo de la rodilla derecha
-    //delay(1000); // Pausa para cada paso
-  }
-  for (byte i = 0; i < 12; i = i + 1) {
-    c_i_t.write(ang_c_i[i]);  // enviar posición al servo de la cadera izquierda
-    r_i_t.write(ang_r_i[i]);  // enviar posición al servo de la rodilla izquierda
-    //delay(1000); // Pausa para cada paso
-  }
-  // segundo movimiento diagonal
-  for (byte i = 0; i < 12; i = i + 1) {
-    c_i_f.write(ang_c_i[i]);  // enviar posición al servo de la cadera izquierda
-    r_i_f.write(ang_r_i[i]);  // enviar posición al servo de la rodilla izquierda
-    //delay(1000); // Pausa para cada paso
-  }
-  for (byte i = 0; i < 12; i = i + 1) {
-    c_d_t.write(ang_c_d[i]);  // enviar posición al servo de la cadera derecha
-    r_d_t.write(ang_r_d[i]);  // enviar posición al servo de la rodilla derecha
-    //delay(1000); // Pausa para cada paso
+  swich = digitalRead(10);
+  if (swich == HIGH) {
+    // primer movimiento diagonal
+    for (byte i = 0; i < 12; i = i + 1) {
+      c_d_f.write(ang_c_d[i]);  // enviar posición al servo de la cadera derecha
+      r_d_f.write(ang_r_d[i]);  // enviar posición al servo de la rodilla derecha
+      delay(50); // Pausa para cada paso
+    }
+    for (byte i = 0; i < 12; i = i + 1) {
+      c_i_t.write(ang_c_i[i]);  // enviar posición al servo de la cadera izquierda
+      r_i_t.write(ang_r_i[i]);  // enviar posición al servo de la rodilla izquierda
+      delay(50); // Pausa para cada paso
+    }
+    // segundo movimiento diagonal
+    for (byte i = 0; i < 12; i = i + 1) {
+      c_i_f.write(ang_c_i[i]);  // enviar posición al servo de la cadera izquierda
+      r_i_f.write(ang_r_i[i]);  // enviar posición al servo de la rodilla izquierda
+      delay(50); // Pausa para cada paso
+    }
+    for (byte i = 0; i < 12; i = i + 1) {
+      c_d_t.write(ang_c_d[i]);  // enviar posición al servo de la cadera derecha
+      r_d_t.write(ang_r_d[i]);  // enviar posición al servo de la rodilla derecha
+      delay(50); // Pausa para cada paso
+    }
   }
 }
