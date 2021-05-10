@@ -53,13 +53,13 @@ void loop() {
         c_d_f.write(ang_c_d[i]);  // enviar posición al servo de la cadera derecha
         r_d_f.write(ang_r_d[i]);  // enviar posición al servo de la rodilla derecha
       }
-      if (i > (desface - 1)) && (i < (12 + (desface - 1)) {
+      if ((i > (desface - 1)) && (i < (12 + (desface - 1)))) {
         c_i_t.write(ang_c_i[i - 2]); // enviar posición al servo de la cadera izquierda
         r_i_t.write(ang_r_i[i - 2]); // enviar posición al servo de la rodilla izquierda
       }
-      if (i > (desface * 2 - 1)) && (i < (12 + (desface * 2 - 1)) {
-      c_i_f.write(ang_c_i[i - 5]); // enviar posición al servo de la cadera izquierda
-        r_i_f.write(ang_r_i[i - 5]); // enviar posición al servo de la rodilla izquierda
+      if ((i > (desface * 2 - 1)) && (i < (12 + (desface * 2 - 1)))) {
+        c_i_f.write(ang_c_i[i - (desface * 2 - 1)]); // enviar posición al servo de la cadera izquierda
+        r_i_f.write(ang_r_i[i - (desface * 2 - 1)]); // enviar posición al servo de la rodilla izquierda
       }
       if (i > (desface * 3 - 1)) {
       c_d_t.write(ang_c_d[i - (desface * 3 - 1)]); // enviar posición al servo de la cadera derecha
