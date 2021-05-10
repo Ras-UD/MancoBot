@@ -17,7 +17,7 @@ int ang_r_d[] = {  0, 15, 30, 45, 60, 75, 90, 75, 60, 45, 30, 15};
 int ang_c_i[] = { 45, 60, 75, 90, 105, 120, 135, 120, 105, 90, 75, 60};
 int ang_r_i[] = {180, 165, 150, 135, 120, 105, 90, 105, 120, 135, 150, 165};
 
-int paso = 200;
+int paso = 100;
 
 int desf = 6;
 
@@ -66,6 +66,7 @@ void loop() {
         c_d_t.write(ang_c_d[i - 12 + desf]); // enviar posición al servo de la cadera derecha
         r_d_t.write(ang_r_d[i - 12 + desf]); // enviar posición al servo de la rodilla derecha
       }
+      delay(paso); // Pausa para cada paso
     }
   }
   //  for (byte i = 0; i < 12; i = i + 1) {
