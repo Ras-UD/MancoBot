@@ -53,6 +53,7 @@ void setup() {
 }
 
 void loop() {
+  
 swich = digitalRead(10);
   if (swich == HIGH) {
     delaIzqCodo.write(180);
