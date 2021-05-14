@@ -17,11 +17,14 @@ int ang_r_d[] = {  0, 15, 30, 45, 60, 75, 90, 75, 60, 45, 30, 15};
 int ang_c_i[] = { 45, 60, 75, 90, 105, 120, 135, 120, 105, 90, 75, 60};
 int ang_r_i[] = {180, 165, 150, 135, 120, 105, 90, 105, 120, 135, 150, 165};
 
-int paso = 100;
+int paso = 500; // Tiempo de espera entre pasos
 
-int desf = 6;
+int desf = 6; // Desfase entre la piernas diagonalmente opuestas 
+              // (derecha frontal - izquierda traseara VS izquierda frontal - derecha trasera)
 
-int swich = 1 ;
+//int def,det,izf,izt = 0; // Variables para ver la señal de salida
+
+int swich = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -47,6 +50,7 @@ void setup() {
 }
 
 void loop() {
+  //swich = HIGH;
   swich = digitalRead(10);
   if (swich == HIGH) {
     // primer movimiento diagonal
@@ -55,34 +59,33 @@ void loop() {
       r_d_f.write(ang_r_d[i]);  // enviar posición al servo de la rodilla derecha
       c_i_t.write(ang_c_i[i]); // enviar posición al servo de la cadera izquierda
       r_i_t.write(ang_r_i[i]); // enviar posición al servo de la rodilla izquierda
+      def = ang_c_d[i];
+      izt = ang_c_i[i];
+      
       if ((i + desf) < 12) {
         c_i_f.write(ang_c_i[i + desf]); // enviar posición al servo de la cadera izquierda
         r_i_f.write(ang_r_i[i + desf]); // enviar posición al servo de la rodilla izquierda
         c_d_t.write(ang_c_d[i + desf]); // enviar posición al servo de la cadera derecha
         r_d_t.write(ang_r_d[i + desf]); // enviar posición al servo de la rodilla derecha
+        izf = ang_c_i[i + desf];
+        det = ang_c_d[i + desf];
       } else {
         c_i_f.write(ang_c_i[i - 12 + desf]); // enviar posición al servo de la cadera izquierda
         r_i_f.write(ang_r_i[i - 12 + desf]); // enviar posición al servo de la rodilla izquierda
         c_d_t.write(ang_c_d[i - 12 + desf]); // enviar posición al servo de la cadera derecha
         r_d_t.write(ang_r_d[i - 12 + desf]); // enviar posición al servo de la rodilla derecha
+        izf = ang_c_i[i - 12 + desf];
+        det = ang_c_d[i - 12 + desf];
       }
+//      Serial.print(def + 200);
+//      Serial.print("\t");
+//      Serial.print(izf + 200);
+//      
+//      Serial.print("\t");
+//      Serial.print(det);
+//      Serial.print("\t");
+//      Serial.println(izt);
       delay(paso); // Pausa para cada paso
     }
   }
-  //  for (byte i = 0; i < 12; i = i + 1) {
-  //    c_i_t.write(ang_c_i[i]);  // enviar posición al servo de la cadera izquierda
-  //    r_i_t.write(ang_r_i[i]);  // enviar posición al servo de la rodilla izquierda
-  //    //delay(1000); // Pausa para cada paso
-  //  }
-  //  // segundo movimiento diagonal
-  //  for (byte i = 0; i < 12; i = i + 1) {
-  //    c_i_f.write(ang_c_i[i]);  // enviar posición al servo de la cadera izquierda
-  //    r_i_f.write(ang_r_i[i]);  // enviar posición al servo de la rodilla izquierda
-  //    //delay(1000); // Pausa para cada paso
-  //  }
-  //  for (byte i = 0; i < 12; i = i + 1) {
-  //    c_d_t.write(ang_c_d[i]);  // enviar posición al servo de la cadera derecha
-  //    r_d_t.write(ang_r_d[i]);  // enviar posición al servo de la rodilla derecha
-  //    //delay(1000); // Pausa para cada paso
-  //  }
 }
