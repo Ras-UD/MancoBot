@@ -17,6 +17,8 @@ int ang_r_d[] = {  0, 15, 30, 45, 60, 75, 90, 75, 60, 45, 30, 15};
 int ang_c_i[] = { 45, 60, 75, 90, 105, 120, 135, 120, 105, 90, 75, 60};
 int ang_r_i[] = {180, 165, 150, 135, 120, 105, 90, 105, 120, 135, 150, 165};
 
+int longitud = 12;
+
 int paso = 500; // Tiempo de espera entre pasos
 
 int desf = 6; // Desfase entre la piernas diagonalmente opuestas 
@@ -58,25 +60,26 @@ void loop() {
       c_d_f.write(ang_c_d[i]);  // enviar posición al servo de la cadera derecha
       r_d_f.write(ang_r_d[i]);  // enviar posición al servo de la rodilla derecha
       c_i_t.write(ang_c_i[i]); // enviar posición al servo de la cadera izquierda
-      r_i_t.write(ang_r_i[i]); // enviar posición al servo de la rodilla izquierda
-      def = ang_c_d[i];
-      izt = ang_c_i[i];
+      r_i_t.write(ang_r_d[i]); // enviar posición al servo de la rodilla izquierda
+//      def = ang_c_d[i];
+//      izt = ang_c_i[i];
       
       if ((i + desf) < 12) {
         c_i_f.write(ang_c_i[i + desf]); // enviar posición al servo de la cadera izquierda
-        r_i_f.write(ang_r_i[i + desf]); // enviar posición al servo de la rodilla izquierda
+        r_i_f.write(ang_r_d[i + desf]); // enviar posición al servo de la rodilla izquierda
         c_d_t.write(ang_c_d[i + desf]); // enviar posición al servo de la cadera derecha
         r_d_t.write(ang_r_d[i + desf]); // enviar posición al servo de la rodilla derecha
-        izf = ang_c_i[i + desf];
-        det = ang_c_d[i + desf];
+//        izf = ang_c_i[i + desf];
+//        det = ang_c_d[i + desf];
       } else {
         c_i_f.write(ang_c_i[i - 12 + desf]); // enviar posición al servo de la cadera izquierda
-        r_i_f.write(ang_r_i[i - 12 + desf]); // enviar posición al servo de la rodilla izquierda
+        r_i_f.write(ang_r_d[i - 12 + desf]); // enviar posición al servo de la rodilla izquierda
         c_d_t.write(ang_c_d[i - 12 + desf]); // enviar posición al servo de la cadera derecha
         r_d_t.write(ang_r_d[i - 12 + desf]); // enviar posición al servo de la rodilla derecha
-        izf = ang_c_i[i - 12 + desf];
-        det = ang_c_d[i - 12 + desf];
+//        izf = ang_c_i[i - 12 + desf];
+//        det = ang_c_d[i - 12 + desf];
       }
+      Serial.println(sizeof(ang_c_i));
 //      Serial.print(def + 200);
 //      Serial.print("\t");
 //      Serial.print(izf + 200);
