@@ -37,8 +37,8 @@ void setup() {
   delaDer.write(90);        //90 AL MEDIO
   delaDerCodo.write(0);     //0 abajo
   traIzqCodo.write(0);      //0 abajo
-  traIzq.write(135);         //0 AL MEDIO
-  traDer.write(45);         //180 AL MEDIO
+  traIzq.write(90);         //0 AL MEDIO
+  traDer.write(90);         //180 AL MEDIO
   traDerCodo.write(0);    //180 abajo
 
 }
@@ -110,20 +110,20 @@ void pataNeg(int x, int y, int z, int w) {
   }
 }
 
-void camDer() {
+void rotIzq() {
   //levanta las patas 1 y 8
   pataPos(0, 45, 1, paso);
   pataPos(0, 45, 8, paso);
   delay(150);
   
-  //movimiento hacia derecha de los hombros 3 y 6
-  pataPos(90, 135, 3, paso);
-  pataPos(45, 90, 6, paso);
+  //movimiento hacia izquierda de hombros 3 y 6
+  pataNeg(135, 45, 4, paso);
+  pataNeg(135, 45, 5, paso);
   delay(3500);
 
   //retorno de los hombros 2 y 7
-  pataNeg(90, 45, 3, paso);
-  pataPos(45, 90, 6, paso);
+  pataPos(45, 135, 2, paso);
+  pataPos(45, 135, 7, paso);
   delay(3500);
   
   //Baja las patas 1 y 8
@@ -136,14 +136,14 @@ void camDer() {
   pataPos(0, 45, 5, paso);
   delay(150);
 
-  //movimiento hacia derecha de hombros 2 y 7
-  pataPos(45, 90, 2, paso);
-  pataNeg(90, 45, 7, paso);
+  //movimiento hacia izquerda de hombros 2 y 7
+  pataNeg(135, 45, 2, paso);
+  pataNeg(135, 45, 7, paso);
   delay(3500);
 
   //retorno de los hombros 3 y 6
-  pataNeg(135, 90, 3, paso);
-  pataNeg(90, 45, 6, paso);
+  pataPos(45, 135, 3, paso);
+  pataPos(45, 135, 6, paso);
   delay(3500);
   
   //baja las patas 4 y 5
@@ -157,7 +157,7 @@ void loop() {
   swich = digitalRead(10);
   if (swich == HIGH) {
 
-    camDer();
+    rotIzq();
 
   }
 }
