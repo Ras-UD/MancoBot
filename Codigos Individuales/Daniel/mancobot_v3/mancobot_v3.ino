@@ -91,8 +91,8 @@ void setup() {
 }
 
 void loop() {
-  //swich = digitalRead(10);
-  swich = HIGH;
+  swich = digitalRead(10);
+  //swich = HIGH;
   if (swich == HIGH) {
     for (int i = 0; i <= int(float(res)*2*times); i++){
       
