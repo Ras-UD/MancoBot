@@ -15,7 +15,7 @@ Servo r_i_t;
 int ang_c_d[] = {135, 120, 105, 90, 75, 60, 45, 60, 75, 90, 105, 120};
 int ang_r_d[] = {  0, 15, 30, 45, 60, 75, 90, 75, 60, 45, 30, 15};
 int ang_c_i[] = { 45, 60, 75, 90, 105, 120, 135, 120, 105, 90, 75, 60};
-int ang_r_i[] = {180, 165, 150, 135, 120, 105, 90, 105, 120, 135, 150, 165};
+int ang_r_i[] = {0, 15, 30, 45, 60, 75, 90, 75, 60, 45, 30, 15};
 
 int paso = 100;
 
@@ -32,7 +32,7 @@ void setup() {
   c_i_f.attach(3);
   r_i_f.attach(2);
   c_d_t.attach(7);
-  r_d_t.attach(6);
+  r_d_t.attach(11);
   c_i_t.attach(8);
   r_i_t.attach(9);
   // posiciònes iniciales
