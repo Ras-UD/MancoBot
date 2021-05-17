@@ -117,13 +117,13 @@ void rotIzq() {
   delay(150);
   
   //movimiento hacia izquierda de hombros 3 y 6
-  pataNeg(135, 45, 3, paso);
-  pataNeg(135, 45, 6, paso);
+  pataNeg(135, 90, 3, paso);
+  pataNeg(90, 45, 6, paso);
   delay(3500);
 
   //retorno de los hombros 2 y 7
-  pataPos(45, 135, 2, paso);
-  pataPos(45, 135, 7, paso);
+  pataNeg(135, 90, 2, paso);
+  pataNeg(90, 45, 7, paso);
   delay(3500);
   
   //Baja las patas 1 y 8
@@ -137,13 +137,13 @@ void rotIzq() {
   delay(150);
 
   //movimiento hacia izquerda de hombros 2 y 7
-  pataNeg(135, 45, 2, paso);
-  pataNeg(135, 45, 7, paso);
+  pataPos(90, 135, 2, paso);
+  pataPos(45, 90, 7, paso);
   delay(3500);
 
   //retorno de los hombros 3 y 6
-  pataPos(45, 135, 3, paso);
-  pataPos(45, 135, 6, paso);
+  pataPos(90, 135, 3, paso);
+  pataPos(45, 90, 6, paso);
   delay(3500);
   
   //baja las patas 4 y 5
