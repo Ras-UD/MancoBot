@@ -76,7 +76,7 @@ void setup() {
   c_i_f.attach(3);
   r_i_f.attach(2);
   c_d_t.attach(7);
-  r_d_t.attach(6);
+  r_d_t.attach(11);
   c_i_t.attach(8);
   r_i_t.attach(9);
   // posiciònes iniciales
